@@ -2,38 +2,32 @@
 <html>
 <head>
 	<title>Matrix Multiplier</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="classes.js"></script>
 	<script src="app.js"></script>
 
-	<script src="mult.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			MyApp.init();
+
+		});
+
+	</script>
 
 </head>
 <body>
-<div id=content>
+<div id="app">
 	<h1>Matrix Multiplier</h1>
-	<p>Enter the dimensions for matrix 1</p>
-	<input type="number" name="dimension 1" id="text1" min = '1' max = '7'>
-	<input type="number" name="dimension 2" id="text2" min = '1' max = '7'>
-
-
- 	<p>Enter the dimensions for matrix 2</p>
-	<input type="number" name="dimension 1" id="text3" min = '1' max = '7'>
-	<input type="number" name="dimension 2" id="text4" min = '1' max = '7'>
-
-
-	<input  id = "create1" type="Submit" name="Submit" value="Create">
-
-	
-	<div id="printTable" style="margin-top:10px;"></div>
-	<div id="printProduct" style="margin-top:10px;"></div>
-	
-</div>
-
-
-
+	<div id="step1" class='container'></div>
+	<div id='step2' class="container"></div>
+	<div id='step3' class="container"></div>
+<!-- 	<div id="printProduct" class = "container" style="margin-top:10px;"></div>
+ --></div>
 
 </body>
 </html>

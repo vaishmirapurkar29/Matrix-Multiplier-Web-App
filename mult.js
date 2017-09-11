@@ -29,6 +29,10 @@ function checkCompatibility(m1_row,m1_col,m2_row,m2_col){
 	}
 	else {
 		alert("These array dimensions are not compatible!");
+		document.querySelector(t1).value = null;
+		document.querySelector(t2).reset();
+		document.querySelector(t3).reset();
+		document.querySelector(t4).reset();
 	}
 }
 
@@ -74,11 +78,7 @@ function createGrid(arr, mat_1col,mat_1row,mat_2row,mat_2col){
 		document.getElementById('printTable').appendChild(break_line);
 
 		for (var j = 0; j < mat_1col; j++) {
-			// var input = document.createElement('input');
-			// // input.setAttribute("type", "text");
-			// // input.setAttribute("id", 'mat'+i+''+j);
-			// document.getElementById('printTable').appendChild(input);
-
+		
 			$('div#printTable').append($("<input/>",{type: 'number',id:'mat1'+i+j}));
 
 		}
