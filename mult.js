@@ -59,14 +59,7 @@ function createMatrices(mat1_row,mat1_col,mat2_row,mat2_col){
 	var break_line = document.createElement('br'); 
 	document.getElementById('printTable').appendChild(break_line);
 
-	var break_line = document.createElement('br'); 
-	document.getElementById('printTable').appendChild(break_line);
-
-    var input1 = document.createElement('input');
-    input1.setAttribute("type", "submit");
-    input1.setAttribute("value", "Multiply");
-    input1.setAttribute("id", "create2");
-	document.getElementById('printTable').appendChild(input1);
+	
 
 	store_values(arr,arr2, mat1_row,mat1_col,mat2_row,mat2_col);
 

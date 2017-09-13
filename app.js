@@ -20,13 +20,22 @@ MyApp = (function(){
 	//function to create matrix forms for user input
 	
 	//function to check the compatibility of the two matrices
+	
+	function storeInitalValues(){
+		if($(t1).val()!=null && $(t2).val()!=null && $(t3).val()!=null && $(t4).val()!=null){
+
+			app.dim_val1 = $(t1).val(); //storing the dimensional values as properties on the app object 
+			app.dim_val2 = $(t2).val(); 
+			app.dim_val3 = $(t3).val(); 
+			app.dim_val4 = $(t4).val(); 
+
+		}
+	}
 	function checkCompatibility(m1_col,m2_row){  
 
 	  return(m1_col === m2_row);
 			
-			
 	}
-
 
 	//function to make the matrices if they are compatible
 	app.makeMatrices = function(row1, col1, row2, col2){
@@ -162,12 +171,13 @@ MyApp = (function(){
 		this.render();
 	}
 	app.render = function(){
-		//storing the already existing values 
-	   document.getElementById(t1).value;
-
+		
 		let html = '';
+
+		storeInitalValues(); //calling the function to store the existing dimension values
     
 	   // Remove my event listerners
+
 	   app.removeListeners();
 	    
 	    // Dump the DOM for population
@@ -188,14 +198,16 @@ MyApp = (function(){
 	    
 	   // populate div#step1 with the necessary HTML
 	   $('div#step1').html(step1);
-
-
+	   
+	   document.querySelector(t1).value = this.dim_val1;  //to keep the existing values
+    	document.querySelector(t2).value = this.dim_val2;
+    	document.querySelector(t3).value = this.dim_val3;
+    	document.querySelector(t4).value = this.dim_val4;
 
 		// STEP 2
-    	// Check to see if my application has stored in data 
+    	// Check to see if my application has stored data 
     	// in matrix1 and matrix2    
-    		if( this.step > 1 ) {
-
+    	if( this.step > 1 ) {
     			let r1 = this.matrix1.getRows();
 				let r2 = this.matrix2.getRows();
 				let c1 = this.matrix1.getCols();
@@ -236,6 +248,8 @@ MyApp = (function(){
 			   input1.setAttribute("id", "create2");
 				document.getElementById('step2').appendChild(input1);
 
+				
+
     		}
 
     		//step 2 end - when the user clicks the multiply button and extracts the values from the generated matrices
@@ -243,8 +257,36 @@ MyApp = (function(){
     		//Step 3 - multiply them and render input to the DOM
     		if(this.step > 2) {
     			
-    			
-    			multiply(this.matrix1.getMatrix(), this.matrix2.getMatrix());
+    			// inserting the values back
+
+    			let mat1 = app.matrix1.getMatrix();
+				let mat2 = app.matrix2.getMatrix();
+
+				console.log(mat1,mat2);
+
+				let r1 = this.matrix1.getRows();
+				let r2 = this.matrix2.getRows();
+				let c1 = this.matrix1.getCols();
+				let c2 = this.matrix2.getCols();
+
+				for (var i = 0; i < r1 ; i++) {
+
+					for (var j = 0; j < c1; j++) {
+			
+						document.getElementById("matrix1"+i+j).value = mat1[i][j];
+					}
+				}
+
+				for (var i = 0; i < r2 ; i++) {
+
+					for (var j = 0; j < c2; j++) {
+			
+						document.getElementById("matrix2"+i+j).value = mat2[i][j];
+					}
+				}
+
+
+    			multiply(this.matrix1.getMatrix(), this.matrix2.getMatrix());  //to multiply the two matrices
 
     			//render input to the DOM
     			var table = document.createElement('table');
